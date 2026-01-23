@@ -1,6 +1,7 @@
 package com.lucasvignolli.usuario.infrastructure.entity;
 
 
+import com.lucasvignolli.usuario.business.dto.EnderecosDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import lombok.*;
 @Entity
 @Table(name = "enderecos")
 @Builder
-public class Enderecos {
+public class Enderecos{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

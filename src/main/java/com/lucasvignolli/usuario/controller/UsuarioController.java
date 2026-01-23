@@ -2,6 +2,8 @@ package com.lucasvignolli.usuario.controller;
 
 
 import com.lucasvignolli.usuario.business.UsuarioService;
+import com.lucasvignolli.usuario.business.dto.EnderecosDTO;
+import com.lucasvignolli.usuario.business.dto.TelefonesDTO;
 import com.lucasvignolli.usuario.business.dto.UsuarioDTO;
 import com.lucasvignolli.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -52,4 +54,15 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.atualizaDadosUsuario(token, dto));
     }
 
+    @PutMapping("/enderecos")
+    public ResponseEntity<EnderecosDTO> atualizaDadosDeEndereco(@RequestBody EnderecosDTO dto,
+                                                               @RequestParam("id") Long id) {
+        return ResponseEntity.ok(usuarioService.atualizaEndereco(id, dto));
+    }
+
+    @PutMapping("/telefones")
+    public ResponseEntity<TelefonesDTO> atualizaDadosDeTelefone(@RequestBody TelefonesDTO dto,
+                                                                @RequestParam("id") Long id){
+    return ResponseEntity.ok(usuarioService.atualizaTelefone(id, dto));
+    }
 }

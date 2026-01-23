@@ -31,6 +31,7 @@ public class UsuarioConverter {
 
     public Enderecos paraEnderecosEntity(EnderecosDTO enderecoDTO) {
         return Enderecos.builder()
+                .id(enderecoDTO.getId())
                 .rua(enderecoDTO.getRua())
                 .numero(enderecoDTO.getNumero())
                 .complemento(enderecoDTO.getComplemento())
@@ -40,21 +41,19 @@ public class UsuarioConverter {
                 .build();
     }
 
-
     public List<Telefones> paraListaTelefones(List<TelefonesDTO> telefoneDTOS) {
-        return telefoneDTOS.stream().map(this::paraTelefone).toList();
+        return telefoneDTOS.stream().map(this::paraTelefoneEntity).toList();
     }
 
-    public Telefones paraTelefone(TelefonesDTO telefoneDTO){
+    public Telefones paraTelefoneEntity(TelefonesDTO telefoneDTO){
         return Telefones.builder()
+                .id(telefoneDTO.getId())
                 .ddd(telefoneDTO.getDdd())
                 .numero(telefoneDTO.getNumero())
                 .build();
     }
 
     //_______________________________________________________________
-
-
     public UsuarioDTO paraUsuarioDTO(Usuario usuarioDT0) {
         return UsuarioDTO.builder()
                 .nome(usuarioDT0.getNome())
@@ -71,6 +70,7 @@ public class UsuarioConverter {
 
     public EnderecosDTO paraEnderecosDTO(Enderecos endereco) {
         return EnderecosDTO.builder()
+                .id(endereco.getId())
                 .rua(endereco.getRua())
                 .numero(endereco.getNumero())
                 .complemento(endereco.getComplemento())
@@ -80,18 +80,18 @@ public class UsuarioConverter {
                 .build();
     }
 
-
     public List<TelefonesDTO> paraListaTelefonesDTO(List<Telefones> telefoneDTOS) {
-        return telefoneDTOS.stream().map(this::paraTelefone).toList();
+        return telefoneDTOS.stream().map(this::paraTelefoneDTO).toList();
     }
 
-    public TelefonesDTO paraTelefone(Telefones telefoneDTOS){
+    public TelefonesDTO paraTelefoneDTO(Telefones telefoneDTOS){
         return TelefonesDTO.builder()
+                .id(telefoneDTOS.getId())
                 .ddd(telefoneDTOS.getDdd())
                 .numero(telefoneDTOS.getNumero())
                 .build();
     }
-
+    //_______________________________________________________________
     public Usuario updateUsuario(UsuarioDTO usuarioDTO, Usuario usuarioEntity){
         return Usuario.builder()
                 .id(usuarioEntity.getId())

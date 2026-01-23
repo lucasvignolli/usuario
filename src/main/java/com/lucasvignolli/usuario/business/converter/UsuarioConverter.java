@@ -92,6 +92,34 @@ public class UsuarioConverter {
                 .build();
     }
 
+    public Usuario updateUsuario(UsuarioDTO usuarioDTO, Usuario usuarioEntity){
+        return Usuario.builder()
+                .id(usuarioEntity.getId())
+                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : usuarioEntity.getNome())
+                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : usuarioEntity.getEmail())
+                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() :  usuarioEntity.getSenha())
+                .endereços(usuarioEntity.getEndereços())
+                .telefones(usuarioEntity.getTelefones())
+                .build();
+    }
 
+    public Enderecos updateEndereço(EnderecosDTO enderecosDTO, Enderecos enderecosEntity){
+        return Enderecos.builder()
+                .id(enderecosEntity.getId())
+                .rua(enderecosDTO.getRua() != null ? enderecosDTO.getRua() : enderecosEntity.getRua())
+                .numero(enderecosDTO.getNumero() != null ? enderecosDTO.getNumero() : enderecosEntity.getNumero())
+                .complemento(enderecosDTO.getComplemento() != null ? enderecosDTO.getComplemento() : enderecosEntity.getComplemento())
+                .cep(enderecosDTO.getCep() != null ? enderecosDTO.getCep() : enderecosEntity.getCep())
+                .cidade(enderecosDTO.getCidade() != null ? enderecosDTO.getCidade() : enderecosEntity.getCidade())
+                .estado(enderecosDTO.getEstado() != null ? enderecosDTO.getEstado() : enderecosEntity.getEstado())
+                .build();
+    }
 
+    public Telefones updateTelefone(TelefonesDTO telefonesDTO, Telefones telefonsEntity){
+        return Telefones.builder()
+                .id(telefonsEntity.getId())
+                .ddd(telefonesDTO.getDdd() != null ? telefonesDTO.getDdd() : telefonsEntity.getDdd())
+                .numero(telefonesDTO.getNumero() != null ? telefonesDTO.getNumero() : telefonsEntity.getNumero())
+                .build();
+    }
 }

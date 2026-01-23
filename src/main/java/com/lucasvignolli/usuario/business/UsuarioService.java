@@ -39,10 +39,6 @@ public class UsuarioService {
         return usuarioRepository.existsByEmail(email);
     }
 
-//    public Usuario buscarUsuarioPorEmail(String email){
-//        return usuarioRepository.findByEmail(email).orElseThrow(() -> new ResourceAccessException("Email não encontrado " + email));
-//    }
-
     public UsuarioDTO buscarUsuarioPorEmail(String email){
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() -> new ResourceAccessException("Email não encontrado " + email));
         return usuarioConverter.paraUsuarioDTO(usuario);

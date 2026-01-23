@@ -3,7 +3,6 @@ package com.lucasvignolli.usuario.controller;
 
 import com.lucasvignolli.usuario.business.UsuarioService;
 import com.lucasvignolli.usuario.business.dto.UsuarioDTO;
-import com.lucasvignolli.usuario.infrastructure.entity.Usuario;
 import com.lucasvignolli.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +35,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> buscaUsuario(@RequestParam("email") String email){
+    public ResponseEntity<UsuarioDTO> buscaUsuario(@RequestParam("email") String email){
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
     }
 

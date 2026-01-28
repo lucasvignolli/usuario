@@ -103,5 +103,6 @@ public class UsuarioService {
         Telefones telefoneEntity = usuarioConverter.paraEndereçoEntityId(telefoneDto, usuario.getId());
         return usuarioConverter.paraTelefoneDTO(telefonesRepository.save(telefoneEntity));
     }
+
 }
 

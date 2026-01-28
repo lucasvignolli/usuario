@@ -133,6 +133,7 @@ public class UsuarioConverter {
                 .numero(dto.getNumero())
                 .usuario_id(idUsuario)
                 .build();
+
     }
 
     public Telefones paraEndereçoEntityId(TelefonesDTO dto, Long idUsuario){

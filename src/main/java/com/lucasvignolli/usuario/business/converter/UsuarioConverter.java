@@ -122,4 +122,24 @@ public class UsuarioConverter {
                 .numero(telefonesDTO.getNumero() != null ? telefonesDTO.getNumero() : telefonsEntity.getNumero())
                 .build();
     }
+
+    public Enderecos paraEndereçoEntityId(EnderecosDTO dto, Long idUsuario){
+        return Enderecos.builder()
+                .rua(dto.getRua())
+                .cidade(dto.getCidade())
+                .cep(dto.getCep())
+                .complemento(dto.getComplemento())
+                .estado(dto.getEstado())
+                .numero(dto.getNumero())
+                .usuario_id(idUsuario)
+                .build();
+    }
+
+    public Telefones paraEndereçoEntityId(TelefonesDTO dto, Long idUsuario){
+        return Telefones.builder()
+                .ddd(dto.getDdd())
+                .numero(dto.getNumero())
+                .usuario_id(idUsuario)
+                .build();
+    }
 }

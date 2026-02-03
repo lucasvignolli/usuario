@@ -50,8 +50,11 @@ public class UsuarioService {
     }
 
     public UsuarioDTO buscarUsuarioPorEmail(String email){
-        Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() -> new ResourceAccessException("Email não encontrado " + email));
-        return usuarioConverter.paraUsuarioDTO(usuario);
+        try {
+            return usuarioConverter.paraUsuarioDTO(usuarioRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Email não encontrado " + email)));
+        } catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException("Email não encontrado " + e.getCause());
+        }
     }
 
     public void deletaUsuario(String email){

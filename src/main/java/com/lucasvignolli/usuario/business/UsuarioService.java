@@ -103,9 +103,8 @@ public class UsuarioService {
         String email = jwtUtil.extractUsername(token.substring(7));
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() ->
                 new ResourceNotFoundException("Email não localizado"));
-        Telefones telefoneEntity = usuarioConverter.paraEndereçoEntityId(telefoneDto, usuario.getId());
+        Telefones telefoneEntity = usuarioConverter.paraTelefoneEntityId(telefoneDto, usuario.getId());
         return usuarioConverter.paraTelefoneDTO(telefonesRepository.save(telefoneEntity));
     }
-
 }
 

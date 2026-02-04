@@ -136,7 +136,7 @@ public class UsuarioConverter {
 
     }
 
-    public Telefones paraEndereçoEntityId(TelefonesDTO dto, Long idUsuario){
+    public Telefones paraTelefoneEntityId(TelefonesDTO dto, Long idUsuario){
         return Telefones.builder()
                 .ddd(dto.getDdd())
                 .numero(dto.getNumero())

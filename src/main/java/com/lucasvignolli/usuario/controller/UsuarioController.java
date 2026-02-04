@@ -67,13 +67,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/enderecos")
-    public ResponseEntity<EnderecosDTO> cadastroNovoEndereço(@RequestBody EnderecosDTO dto,
+    public ResponseEntity<EnderecosDTO> cadastraNovoEndereço(@RequestBody EnderecosDTO dto,
                                                              @RequestHeader("Authorization") String token){
         return ResponseEntity.ok(usuarioService.cadastraEndereco(dto, token));
     }
 
     @PostMapping("/telefones")
-    public ResponseEntity<TelefonesDTO> cadasNovoEndereço(@RequestBody TelefonesDTO dto,
+    public ResponseEntity<TelefonesDTO> cadastraNovoTelefone(@RequestBody TelefonesDTO dto,
                                                           @RequestHeader("Authorization") String token){
         return ResponseEntity.ok(usuarioService.cadastaTelefone(dto, token));
     }

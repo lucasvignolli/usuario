@@ -38,7 +38,6 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Telefones> telefones;
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

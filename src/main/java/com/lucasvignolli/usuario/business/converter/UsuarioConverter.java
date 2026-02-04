@@ -133,9 +133,10 @@ public class UsuarioConverter {
                 .numero(dto.getNumero())
                 .usuario_id(idUsuario)
                 .build();
+
     }
 
-    public Telefones paraEndereçoEntityId(TelefonesDTO dto, Long idUsuario){
+    public Telefones paraTelefoneEntityId(TelefonesDTO dto, Long idUsuario){
         return Telefones.builder()
                 .ddd(dto.getDdd())
                 .numero(dto.getNumero())

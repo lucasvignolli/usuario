@@ -50,8 +50,11 @@ public class UsuarioService {
     }
 
     public UsuarioDTO buscarUsuarioPorEmail(String email){
-        Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() -> new ResourceAccessException("Email não encontrado " + email));
-        return usuarioConverter.paraUsuarioDTO(usuario);
+        try {
+            return usuarioConverter.paraUsuarioDTO(usuarioRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Email não encontrado " + email)));
+        } catch (ResourceNotFoundException e){
+            throw new ResourceNotFoundException("Email não encontrado " + e.getCause());
+        }
     }
 
     public void deletaUsuario(String email){
@@ -100,7 +103,7 @@ public class UsuarioService {
         String email = jwtUtil.extractUsername(token.substring(7));
         Usuario usuario = usuarioRepository.findByEmail(email).orElseThrow(() ->
                 new ResourceNotFoundException("Email não localizado"));
-        Telefones telefoneEntity = usuarioConverter.paraEndereçoEntityId(telefoneDto, usuario.getId());
+        Telefones telefoneEntity = usuarioConverter.paraTelefoneEntityId(telefoneDto, usuario.getId());
         return usuarioConverter.paraTelefoneDTO(telefonesRepository.save(telefoneEntity));
     }
 }

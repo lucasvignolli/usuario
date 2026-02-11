@@ -2,10 +2,13 @@ package com.lucasvignolli.usuario.controller;
 
 
 import com.lucasvignolli.usuario.business.UsuarioService;
+import com.lucasvignolli.usuario.business.ViaCepService;
 import com.lucasvignolli.usuario.business.dto.EnderecosDTO;
 import com.lucasvignolli.usuario.business.dto.TelefonesDTO;
 import com.lucasvignolli.usuario.business.dto.UsuarioDTO;
+import com.lucasvignolli.usuario.business.dto.ViaCepDTO;
 import com.lucasvignolli.usuario.infrastructure.security.JwtUtil;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.osgi.annotation.bundle.Header;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final ViaCepService viaCepService;
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> salvaUsuario(@RequestBody UsuarioDTO usuarioDTO){
@@ -76,5 +80,10 @@ public class UsuarioController {
     public ResponseEntity<TelefonesDTO> cadastraNovoTelefone(@RequestBody TelefonesDTO dto,
                                                           @RequestHeader("Authorization") String token){
         return ResponseEntity.ok(usuarioService.cadastaTelefone(dto, token));
+    }
+
+    @GetMapping("/endereco/{cep}")
+    public ResponseEntity<ViaCepDTO> buscaCep (@PathVariable("cep") String cep){
+        return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
     }
 }

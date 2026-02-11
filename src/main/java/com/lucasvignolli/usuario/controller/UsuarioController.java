@@ -82,7 +82,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.cadastaTelefone(dto, token));
     }
 
-    @GetMapping("/endereco/{cep})")
+    @GetMapping("/endereco/{cep}")
     public ResponseEntity<ViaCepDTO> buscaCep (@PathVariable("cep") String cep){
         return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
     }

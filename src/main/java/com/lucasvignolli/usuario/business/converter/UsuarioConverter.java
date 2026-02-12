@@ -38,6 +38,7 @@ public class UsuarioConverter {
                 .cidade(enderecoDTO.getCidade())
                 .estado(enderecoDTO.getEstado())
                 .cep(enderecoDTO.getCep())
+                .usuario_id(enderecoDTO.getId())
                 .build();
     }
 
@@ -50,6 +51,7 @@ public class UsuarioConverter {
                 .id(telefoneDTO.getId())
                 .ddd(telefoneDTO.getDdd())
                 .numero(telefoneDTO.getNumero())
+                .usuario_id(telefoneDTO.getId())
                 .build();
     }
 

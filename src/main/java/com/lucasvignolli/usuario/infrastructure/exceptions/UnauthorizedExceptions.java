@@ -1,6 +1,6 @@
 package com.lucasvignolli.usuario.infrastructure.exceptions;
 
-import javax.naming.AuthenticationException;
+import org.springframework.security.core.AuthenticationException;
 
 public class UnauthorizedExceptions extends AuthenticationException {
 

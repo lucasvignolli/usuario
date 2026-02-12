@@ -1,7 +1,6 @@
 package com.lucasvignolli.usuario.infrastructure.entity;
 
 
-import com.lucasvignolli.usuario.business.dto.EnderecosDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
